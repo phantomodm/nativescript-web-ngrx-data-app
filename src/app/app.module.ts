@@ -1,21 +1,35 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatProgressSpinnerModule } from '@angular/material';
 
-import { AppRoutingModule } from '@src/app/app-routing.module';
 import { AppComponent } from '@src/app/app.component';
 import { HomeComponent } from '@src/app/home/home.component';
-
+import { SHARED_ROOT_MODULES, PROVIDERS } from './app.common';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
+    HomeComponent
   ],
-  imports: [
+  imports: [ 
     BrowserModule,
-    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatToolbarModule,
+    ...SHARED_ROOT_MODULES
   ],
-  providers: [],
+  providers: [
+    ...PROVIDERS
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,15 +1,25 @@
 import { Routes } from '@angular/router';
+import { loginRoutes } from './auth/auth.routes';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from './auth/guards/auth.guard';
 
-import { HomeComponent } from '@src/app/home/home.component';
+export const guards = [
+  AuthGuard
+]
 
-export const routes: Routes = [
+export const AppRoutes: Routes = [
   {
       path: '',
-      redirectTo: '/home',
+      redirectTo: '/login',
       pathMatch: 'full',
   },
   {
-      path: 'home',
-      component: HomeComponent,
+      path: 'login',
+      children: loginRoutes,
+      component: LoginComponent,
   },
+  {
+      path: '**',
+      redirectTo: '/'
+  }
 ];
